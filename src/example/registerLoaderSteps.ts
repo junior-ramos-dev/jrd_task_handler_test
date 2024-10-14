@@ -18,13 +18,17 @@ export const checkEmailExists = async (email: string) => {
   console.log(email);
   let emailExists: boolean = false;
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     emailExists = false;
+    // Simulate an asynchronous operation
     setTimeout(() => {
-      resolve(emailExists);
-
-      if (emailExists) {
-        throw new Error("An account with the provided email already exists");
+      try {
+        if (emailExists) {
+          throw new Error("An account with the provided email already exists");
+        }
+        resolve(emailExists);
+      } catch (error) {
+        reject(error);
       }
     }, 1000);
   });
@@ -34,13 +38,18 @@ export const checkEmailExists = async (email: string) => {
 export const getApiCredentials = async () => {
   let apiCredentials: unknown = undefined;
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     apiCredentials = { token: "<some token>" };
     setTimeout(() => {
-      resolve(apiCredentials);
-
-      if (!apiCredentials) {
-        throw new Error("An error occurred while getting the API credentials");
+      try {
+        if (apiCredentials) {
+          throw new Error(
+            "An error occurred while getting the API credentials"
+          );
+        }
+        resolve(apiCredentials);
+      } catch (error) {
+        reject(error);
       }
     }, 2000);
   });
@@ -54,14 +63,17 @@ export const createAccount = async (email: string, password: string) => {
     user: { id: "", email: "" },
   };
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     data.user.id = uuid();
     data.user.email = email;
     setTimeout(() => {
-      resolve(data);
-
-      if (!data) {
-        throw new Error("An error occurred while creating the account");
+      try {
+        if (!data) {
+          throw new Error("An error occurred while creating the account");
+        }
+        resolve(data);
+      } catch (error) {
+        reject(error);
       }
     }, 3000);
   });
@@ -72,13 +84,16 @@ export const loadGamesList = async (userId: string) => {
   console.log(userId);
   let gamesList: unknown = undefined;
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     gamesList = ["game1", "game2"];
     setTimeout(() => {
-      resolve(gamesList);
-
-      if (!gamesList) {
-        throw new Error("An error occurred loading games list");
+      try {
+        if (!gamesList) {
+          throw new Error("An error occurred loading games list");
+        }
+        resolve(gamesList);
+      } catch (error) {
+        reject(error);
       }
     }, 4000);
   });
@@ -89,13 +104,16 @@ export const loadGamesIcons = async (userId: string) => {
   console.log(userId);
   let gamesIcons: unknown = undefined;
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     gamesIcons = ["icon1", "icon2"];
     setTimeout(() => {
-      resolve(gamesIcons);
-
-      if (!gamesIcons) {
-        throw new Error("An error occurred loading games icons");
+      try {
+        if (!gamesIcons) {
+          throw new Error("An error occurred loading games icons");
+        }
+        resolve(gamesIcons);
+      } catch (error) {
+        reject(error);
       }
     }, 4000);
   });
@@ -106,13 +124,16 @@ export const loadGamesTrophiesList = async (userId: string) => {
   console.log(userId);
   let trophiesLists: unknown = undefined;
 
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     trophiesLists = ["list1", "list2"];
     setTimeout(() => {
-      resolve(trophiesLists);
-
-      if (!trophiesLists) {
-        throw new Error("An error occurred games trophies lists");
+      try {
+        if (!trophiesLists) {
+          throw new Error("An error occurred games trophies lists");
+        }
+        resolve(trophiesLists);
+      } catch (error) {
+        reject(error);
       }
     }, 10000);
   });
