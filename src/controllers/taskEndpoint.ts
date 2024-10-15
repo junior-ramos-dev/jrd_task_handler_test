@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 
+import { registerTasksSpecsList } from "@/example/registerTasksSpecsList";
 import {
-  taskHandlerWrapper,
   handleResponse,
   taskHandler,
-} from "../../node_modules/jrd_task_handler/dist";
-
-import { registerTasksSpecsList } from "@/example/registerTasksSpecsList";
+  taskHandlerWrapper,
+} from "jrd_task_handler";
 
 export const taskEndpoint = async (req: Request, res: Response) => {
   const requestArgs: object = req.body;
