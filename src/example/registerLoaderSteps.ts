@@ -42,7 +42,7 @@ export const getApiCredentials = async () => {
     apiCredentials = { token: "<some token>" };
     setTimeout(() => {
       try {
-        if (apiCredentials) {
+        if (!apiCredentials) {
           throw new Error(
             "An error occurred while getting the API credentials"
           );
